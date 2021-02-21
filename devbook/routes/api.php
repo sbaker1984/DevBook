@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/createUser', 'register_controller@create');
 Route::get('/viewUser', 'register_controller@view');
-Route::get('/viewUser/edit', 'register_controller@edit');
-Route::get('/viewUser/delete', 'register_controller@delete');
-Route::get('/search', 'register_controller@search');
+Route::post('/viewUser/edit', 'register_controller@edit');
+Route::post('/viewUser/delete', 'register_controller@destroy');
+Route::post('/search', 'register_controller@search');
