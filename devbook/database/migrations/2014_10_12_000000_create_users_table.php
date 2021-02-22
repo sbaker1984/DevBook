@@ -19,10 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('email')->unique();
             $table->date('dateOfBirth');
-            $table->string('nationalInsuranceNumber');
+            $table->string('nationalInsuranceNumber')->unique();
             $table->url('profileImage');
             $table->longText('fullAddress');
             $table->longText('bio');
+            $table->timestamps('lastLogin');
             $table->timestamps();
         });
     }

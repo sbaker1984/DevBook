@@ -9,11 +9,11 @@ class register_Controller extends Controller
     public function create(Request $request){
 
         $request->validate([
-            'firstName'=>'string|required',
-            'lastName'=>'string|required',
-            'email'=>'email|required',
-            'dateOfBirth' => 'date|required',
-            'nationalInusrance' => 'integer|required',
+            'firstName'=>'string','required',
+            'lastName'=>'string','required',
+            'email'=>'email','required',
+            'dateOfBirth' => 'date','required',
+            'nationalInusrance' => 'integer','unique','required',
             'profileImage'=>'url',
             'fullAddress' => 'string',
             'bio' => 'string'
@@ -37,7 +37,7 @@ class register_Controller extends Controller
         $request->validate([
             'firstName'=>'string|required',
             'lastName'=>'string|required',
-            'profileImage'=>'url',
+            'profileImage'=>'file',
             'fullAddress' => 'string',
             'bio' => 'string'
         ]);
@@ -45,7 +45,7 @@ class register_Controller extends Controller
         $user = Auth::User($id);
         $user->firstName = $request->firstName;
         $user->lastName = $request->lastName;
-        $user->profileImage = $request->profileImage;
+        $user->profileImage = $request->profileImage->store('profileImage');
         $user->fullAddress = $request->fullAddress;
         $user->bio = $request->bio;
         $user->save();
