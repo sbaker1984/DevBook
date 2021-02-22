@@ -48,6 +48,7 @@ class register_Controller extends Controller
         $user->profileImage = $request->profileImage->store('profileImage');
         $user->fullAddress = $request->fullAddress;
         $user->bio = $request->bio;
+        $user->lastLogin = Carbon::now();
         $user->save();
     }
 
@@ -58,12 +59,6 @@ class register_Controller extends Controller
 
     public function view($id){
         $user = Auth::User($id)->get();
-        return $user;
-    }
-
-    public function search(Request $request){
-        $user = User::Query()->whereLike('bio', $request->keyword)->get();
-
         return $user;
     }
 }

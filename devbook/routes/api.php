@@ -23,3 +23,5 @@ Route::get('/viewUser', 'register_controller@view');
 Route::post('/viewUser/edit', 'register_controller@edit');
 Route::post('/viewUser/delete', 'register_controller@destroy');
 Route::post('/search', 'register_controller@search');
+Route::get('send', 'userController@loginCheck');
+
